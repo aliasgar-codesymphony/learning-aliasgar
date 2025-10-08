@@ -3,47 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Demo</title>
+    <title>Form with CSS</title>
 </head>
 <body>
     <center>
-    <h2>Registeration Form</h2>
+    <h2>Registeration Form with CSS</h2>
     <form action="link.html" method="post" enctype="multipart/form-data">
     <table border="1" cellpadding="10" cellspacing="0">
         <tr>
             <th>Label</th>
-            <th colspan="2">Tages</th>
+            <th>Tages</th>
             
         </tr>
         <tr>
-            <td>Enter Username </td>
-            <td colspan="2" >FirstName: <input type="text" name="txtFirst" id="txtFirst" required autofocus><br><br>LastName: <input type="text" name="txtLast" id="txtLast" required></td> 
+            <td>Enter FirstName </td>
+            <td ><input type="text" name="txtFirst" id="txtFirst" required autofocus></td> 
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td><input type="text" name="txtLast" id="txtLast" required></td>
         </tr>
 
         <tr>
             <td>Enter Email </td>
-            <td colspan="2"><input type="email" name="txtemail" id="txtemail" required></td>
+            <td><input type="email" name="txtemail" id="txtemail" required></td>
         </tr>
         <tr>
             <td>Select Gender</td>
-            <td ><input type="radio" name="Gender" id="male" checked required>Male </td>          
-            <td><input type="radio" name="Gender" id="female" required>Female</td>
+            <td ><input type="radio" name="Gender" id="male" checked required>Male <input type="radio" name="Gender" id="female" required>Female</td>                      
         </tr>
         <tr>
             <td>Select Hobbies</td>
             <td>
             <input type="checkbox" name="h1" >Playing Cricket
             <input type="checkbox" name="h2" >Swimmimg
-            </td>
-            <td>
             <input type="checkbox" name="h3" >Writing
             <input type="checkbox" name="h4" >Travelling
             </td>
+            
         </tr>
 
         <tr>
             <td>Select country</td>
-            <td colspan="2"><select  name="country" id="country" required>
+            <td ><select  name="country" id="country" required>
             <option value="Gujarat" selected>India</option>
             <option value="Goa" >Russia</option>
             <option value="Maharashtra">Australia</option>
@@ -53,7 +55,7 @@
 
         <tr>
             <td>Select State</td>
-            <td colspan="2"><select  name="state" id="state" required>
+            <td ><select  name="state" id="state" required>
             <option value="Gujarat" >Gujarat</option>
             <option value="Goa" selected>Goa</option>
             <option value="Maharashtra">Maharashtra</option>
@@ -63,7 +65,7 @@
 
         <tr>
             <td>Select City</td>
-            <td colspan="2"><select  name="city" id="city" required>
+            <td><select  name="city" id="city" required>
             <option value="Jamnagar" >Jamnagar</option>
             <option value="Ahmedabad" selected>Ahmedabad</option>
             <option value="Rajkot">Rajkot</option>
@@ -72,31 +74,31 @@
         </tr>
         <tr>
             <td>Enter About Yourself</td>
-            <td colspan="2" ><textarea name="des" id="des" cols="30" rows="10" required></textarea></td>
+            <td ><textarea name="des" id="des" cols="30" rows="10" required></textarea></td>
         </tr>
         <tr>
             <td>Select BirthDate</td>
-            <td colspan="2" ><input type="date" name="birthDate" id="birthDate" required></td>
+            <td ><input type="date" name="birthDate" id="birthDate" required></td>
         </tr>
         <tr>
             <td>Upload Image</td>
-            <td colspan="2" ><input type="file" name="imageFile" id="imageFile" accept="image/*" required></td>
+            <td ><input type="file" name="imageFile" id="imageFile" accept="image/*" required></td>
         </tr>
         <tr>
             <td>Enter Phone No.</td>
-            <td colspan="2" ><input type="tel" maxlength="10" pattern="[0-9]{10}" name="phone" id="phone" required></td>
+            <td ><input type="tel" maxlength="10" pattern="[0-9]{10}" name="phone" id="phone" required></td>
         </tr>
         <tr>
             <td>Enter Password</td>
-            <td colspan="2" ><input type="password" name="txtpass" id="txtpass" minlength="8" maxlength="16"  required></td>
+            <td><input type="password" name="txtpass" id="txtpass" minlength="8" maxlength="16"  required></td>
         </tr>
         <tr>
             <td>Confirm Password: </td>
-            <td colspan="2" ><input type="password" name="cnfpass" id="cnfpass" minlength="8"  maxlength="16" required></td>
+            <td ><input type="password" name="cnfpass" id="cnfpass" minlength="8"  maxlength="16" required></td>
         </tr>
         <tr>
             <td></td>
-            <td colspan="2" ><input type="submit" value="Submit" name="submit" id="submit"></td>
+            <td ><input type="submit" value="Submit" name="submit" id="submit"></td>
         </tr>
     </table>
    
