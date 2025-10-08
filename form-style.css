@@ -1,0 +1,33 @@
+table {
+  border: 3px solid #de5bbf;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 30px;
+}
+td {
+  text-align: center;
+}
+input {
+  font-weight: bold;
+}
+.wh {
+  width: 80%;
+  height: 25px;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  height: 30px;
+  background-color: #f00760;
+  border-radius: 30px;
+  border: none;
+}
+input[type="submit"]:hover {
+  background-color: #de5bbf;
+  border: 3px solid #f00760;
+}
+
+select,
+textarea {
+  font-weight: bold;
+}
