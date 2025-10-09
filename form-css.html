@@ -1,112 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form with CSS</title>
-    <link rel="stylesheet" href="./form-style.css">
-   
-</head>
-<body>
-    <center>
-    <h2>Registeration Form</h2>
-    <form action="link.html" method="post" enctype="multipart/form-data">
-    <table cellpadding="10" cellspacing="0" >
-        <tr>
-            <th><label >Label</label></th>
-            <th><label >Tags</label></th>
-        </tr>
-        <tr>
-            <td><label for="txtFirst">Enter FirstName</label></td>
-            <td ><input type="text" name="txtFirst" id="txtFirst" class="wh" required autofocus></td> 
-        </tr>
-        <tr>
-            <td><label for="txtLast">Enter Lastname</label></td>
-            <td><input type="text" name="txtLast" id="txtLast" class="wh" required></td>
-        </tr>
-        <tr>
-            <td><label for="txtEmail">Enter Email</label></td>
-            <td><input type="email" name="txtEmail" id="txtEmail" class="wh" required></td>
-        </tr>
-        <tr>
-            <td><label for="gender">Select Gender</label></td>
-            <td ><input type="radio" name="gender" id="male" checked required>Male <input type="radio" name="Gender" id="female" required>Female</td>               
-        </tr>
-        <tr>
-            <td>Select Hobbies</td>
-            <td>
-            <input type="checkbox" name="h1" >Playing Cricket
-            <input type="checkbox" name="h2" >Swimmimg
-            <input type="checkbox" name="h3" >Writing
-            <input type="checkbox" name="h4" >Travelling
-            </td>
-        </tr>
+    <link rel="stylesheet" href="./form-style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h2 id="head">Registeration Form</h2>
+        <form action="link.html" method="post" enctype="multipart/form-data">
+          <table cellpadding="10" cellspacing="0">
+            <tr>
+              <th><label>Label</label></th>
+              <th><label>Tags</label></th>
+            </tr>
+            <tr>
+              <td><label for="txtFirst">Enter FirstName</label></td>
+              <td>
+                <input
+                  type="text"
+                  name="txtFirst"
+                  id="txtFirst"
+                  class="wh"
+                  required
+                  autofocus
+                  placeholder="e.g. John"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="txtLast">Enter Lastname</label></td>
+              <td>
+                <input
+                  type="text"
+                  name="txtLast"
+                  id="txtLast"
+                  class="wh"
+                  required
+                  placeholder="e.g. Doe"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="txtEmail">Enter Email</label></td>
+              <td>
+                <input
+                  type="email"
+                  name="txtEmail"
+                  id="txtEmail"
+                  class="wh"
+                  required
+                  placeholder="e.g. john@gmail.com"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="gender">Select Gender</label></td>
+              <td>
+                <input
+                  type="radio"
+                  name="gender"
+                  id="male"
+                  checked
+                  required
+                />Male
+                <input type="radio" name="Gender" id="female" required />Female
+              </td>
+            </tr>
+            <tr>
+              <td>Select Hobbies</td>
+              <td>
+                <input type="checkbox" name="h1" id="cric" />Playing Cricket
+                <input type="checkbox" name="h2" />Swimmimg
+                <input type="checkbox" name="h3" />Writing
+                <input type="checkbox" name="h4" />Travelling
+              </td>
+            </tr>
 
-        <tr>
-            <td><label for="country">Select country</label></td>
-            <td ><select  name="country" id="country" class="wh" required>
-            <option value="Gujarat" selected>India</option>
-            <option value="Goa" >Russia</option>
-            <option value="Maharashtra">Australia</option>
-            <option value="Rajasthan">Uk</option>
-        </select></td>
-        </tr>
+            <tr>
+              <td><label for="country">Select country</label></td>
+              <td>
+                <select name="country" id="country" class="wh" required>
+                  <option value="Gujarat" selected>India</option>
+                  <option value="Goa">Russia</option>
+                  <option value="Maharashtra">Australia</option>
+                  <option value="Rajasthan">Uk</option>
+                </select>
+              </td>
+            </tr>
 
-        <tr>
-            <td><label for="state">Select State</label></td>
-            <td ><select  name="state" id="state" class="wh" required>
-            <option value="Gujarat" >Gujarat</option>
-            <option value="Goa" selected>Goa</option>
-            <option value="Maharashtra">Maharashtra</option>
-            <option value="Rajasthan">Rajasthan</option>
-        </select></td>
-        </tr>
+            <tr>
+              <td><label for="state">Select State</label></td>
+              <td>
+                <select name="state" id="state" class="wh" required>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Goa" selected>Goa</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="Rajasthan">Rajasthan</option>
+                </select>
+              </td>
+            </tr>
 
-        <tr>
-            <td><label for="city">Select City</label></td>
-            <td ><select  name="city" id="city"  class="wh" required>
-            <option value="Jamnagar" >Jamnagar</option>
-            <option value="Ahmedabad" selected>Ahmedabad</option>
-            <option value="Rajkot">Rajkot</option>
-            <option value="Surat">Surat</option>
-        </select></td>
-        </tr>
-        <tr>
-            <td><label for="des">Enter About Yourself</label></td>
-            <td ><textarea name="des" id="des" cols="30" rows="10" class="wh" required></textarea></td>
-        </tr>
-        <tr>
-            <td><label for="birthDate">Select BirthDate</label></td>
-            <td ><input type="date" name="birthDate" id="birthDate" class="wh" required></td>
-        </tr>
-        <tr>
-            <td><label for="imageFile">Upload Image</label></td>
-            <td ><input type="file" name="imageFile" id="imageFile"  accept="image/*" class="wh" required></td>
-        </tr>
-        <tr>
-            <td><label for="phone">Enter Phone No.</label></td>
-            <td ><input type="tel" maxlength="10" pattern="[0-9]{10}" name="phone" id="phone" class="wh" required></td>
-        </tr>
-        <tr>
-            <td><label for="txtpass">Enter Password</label></td>
-            <td ><input type="password" name="txtpass" id="txtpass" minlength="8" maxlength="16" class="wh"  required></td>
-        </tr>
-        <tr>
-            <td><label for="cnfpass">Confirm Password</label></td>
-            <td ><input type="password" name="cnfpass" id="cnfpass" minlength="8"  maxlength="16" class="wh" required></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td ><input type="submit" value="Submit" class="wh"></td>
-        </tr>
-    </table>
-   
-    </form>
-    </center>
-</body>
+            <tr>
+              <td><label for="city">Select City</label></td>
+              <td>
+                <select name="city" id="city" class="wh" required>
+                  <option value="Jamnagar">Jamnagar</option>
+                  <option value="Ahmedabad" selected>Ahmedabad</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Surat">Surat</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="des">Enter About Yourself</label></td>
+              <td>
+                <textarea
+                  name="des"
+                  id="des"
+                  class="wh"
+                  required
+                  placeholder="e.g. I am graphic designer"
+                ></textarea>
+              </td>
+            </tr>
+            <tr>
+              <td><label for="birthDate">Select BirthDate</label></td>
+              <td>
+                <input
+                  type="date"
+                  name="birthDate"
+                  id="birthDate"
+                  class="wh"
+                  required
+                  placeholder="e.g. "
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="imageFile">Upload Image</label></td>
+              <td>
+                <input
+                  type="file"
+                  name="imageFile"
+                  id="imageFile"
+                  accept="image/*"
+                  class="wh"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="phone">Enter Phone No.</label></td>
+              <td>
+                <input
+                  type="tel"
+                  maxlength="10"
+                  pattern="[0-9]{10}"
+                  name="phone"
+                  id="phone"
+                  class="wh"
+                  required
+                  placeholder="e.g. 9210399010"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="txtpass">Enter Password</label></td>
+              <td>
+                <input
+                  type="password"
+                  name="txtpass"
+                  id="txtpass"
+                  minlength="8"
+                  maxlength="16"
+                  class="wh"
+                  required
+                  placeholder="e.g. #john123"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td><label for="cnfpass">Confirm Password</label></td>
+              <td>
+                <input
+                  type="password"
+                  name="cnfpass"
+                  id="cnfpass"
+                  minlength="8"
+                  maxlength="16"
+                  class="wh"
+                  required
+                  placeholder="value same as password"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><input type="submit" value="Submit" class="wh" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
-
-
-
-
-

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h2 id="head">Sign Up</h2>
+        <form action="link.html" method="post">
+          <input
+            type="text"
+            name="txtFirst"
+            class="wh"
+            required
+            autofocus
+            placeholder="Firstname"
+          /><br /><br />
+          <input
+            type="text"
+            name="txtLast"
+            class="wh"
+            required
+            autofocus
+            placeholder="Lastname"
+          /><br /><br />
+          <input
+            type="email"
+            name="txtEmail"
+            class="wh"
+            required
+            placeholder="Email"
+          /><br /><br />
+          <input
+            type="tel"
+            maxlength="10"
+            pattern="[0-9]{10}"
+            name="phone"
+            id="phone"
+            class="wh"
+            required
+            placeholder="Mobile No."
+          /><br /><br />
+          <input
+            type="password"
+            name="txtpass"
+            minlength="8"
+            maxlength="16"
+            class="wh"
+            required
+            placeholder="Password"
+          /><br /><br />
+          <input
+            type="password"
+            name="cnfpass"
+            minlength="8"
+            maxlength="16"
+            class="wh"
+            required
+            placeholder="Confirm Password"
+          /><br /><br />
+          <input type="submit" value="Submit" id="btn" class="wh" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
