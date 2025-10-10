@@ -28,6 +28,7 @@
   font-size: large;
   border-bottom: 1px solid black;
   background-color: rgb(250, 250, 250);
+  outline: none;
 }
 
 #btn {
@@ -36,3 +37,4 @@
   width: 290px;
   color: white;
 }
+
