@@ -1,18 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
-<body>
-    <h3>Five html tags example</h3>
-    <a href="five-tags.html">Go to five-tags</a><br><br>
+    <style>
+      #main {
+        width: 500px;
+        height: auto;
+        /* border: 1px solid black; */
+        margin-left: 700px;
+        font-size: 25px;
+        margin-top: 50px;
+        background-color: aquamarine;
+        box-shadow: 10px 10px 5px coral;
+        border-radius: 20px;
+      }
 
-    <h3>Link and table example</h3>
-    <a href="link.html">Go to link-table</a><br><br>
-
-    <h3>Form example</h3>
-    <a href="form.html">Go to form</a>
-</body>
+      table {
+        width: 100%;
+        /* table-layout: fixed; */
+        border-collapse: collapse;
+        border: none;
+        border-radius: 20px;
+      }
+      a {
+        text-decoration: none;
+        background-color: rgb(165, 97, 42);
+        border: 1px solid black;
+        color: white;
+        padding: 10px;
+      }
+      td {
+        text-align: center;
+      }
+      #head {
+        margin: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <h2 align="center" id="head">All Files</h2>
+      <table cellspacing="0">
+        <tr>
+          <th>Description</th>
+          <th>Links</th>
+        </tr>
+        <tr>
+          <td><p>Five html tags example</p></td>
+          <td><a href="five-tags.html">Go to five-tags</a></td>
+        </tr>
+        <tr>
+          <td><p>Link and table example</p></td>
+          <td><a href="link.html">Go to link-table</a></td>
+        </tr>
+        <tr>
+          <td><p>Form example</p></td>
+          <td><a href="form.html">Go to form</a></td>
+        </tr>
+        <tr>
+          <td><p>Frame example</p></td>
+          <td><a href="frame.html">Go to frame</a></td>
+        </tr>
+        <tr>
+          <td><p>Form with CSS example</p></td>
+          <td><a href="form-css.html">Go to form-css</a></td>
+        </tr>
+      </table>
+    </div>
+  </body>
 </html>

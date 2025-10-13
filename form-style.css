@@ -1,0 +1,75 @@
+.container {
+  width: 500px;
+  height: 800px;
+  margin-left: 370px;
+}
+
+* {
+  font-size: 20px;
+  color: #dc0505;
+  font-family: Arial;
+}
+#head {
+  color: #ff780a !important;
+  font-size: 30px !important;
+  text-shadow: 0 0 10px #07f060;
+  margin-left: 300px;
+  white-space: nowrap;
+}
+
+table {
+  height: 100%;
+  width: 100%;
+  /* border: 2px solid #de5bbf; */
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 30px;
+  background-color: aquamarine;
+  box-shadow: 0 0 10px 5px #de5bbf;
+  /* #07d5f080; */
+}
+td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+input {
+  font-weight: bold;
+}
+.wh {
+  width: 80%;
+  height: 25px;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  height: 40px !important;
+  background-color: #f00760;
+  border-radius: 30px;
+  border: none;
+  color: white !important;
+}
+input[type="submit"]:hover {
+  background-color: #de5bbf;
+  border: 3px solid #f00760;
+}
+
+select,
+textarea {
+  font-weight: bold;
+}
+
+textarea {
+  resize: none;
+  height: 100px !important;
+  width: 80% !important;
+  margin-left: 10px !important;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #dc0505;
+}
+
+#cric {
+  margin-left: 60px;
+}
