@@ -160,19 +160,22 @@ console.log(person.fullName());
 }
 console.log("Loop finished");*/
 
-
 let s = "Hello";
 
-for(const i of s){
+for (const i of s) {
   console.log(i);
 }
 
 const fruits = {
-  "apple":"red",
-  "orange":"orange",
-  "banana":"yellow"
+  apple: "red",
+  orange: "orange",
+  banana: "yellow",
 };
 
-for(const i in fruits){
-  console.log(i+" : "+fruits[i]);
+for (const i in fruits) {
+  console.log(i + " : " + fruits[i]);
 }
+
+myVar = 10;
+console.log(myVar);
+var myVar;
