@@ -10,19 +10,22 @@
     <br />
 
     <form>
-      Enter number 1: <input type="text" id="num1" /><br /><br />
-      Enter number 2: <input type="text" id="num2" /><br /><br />
+      Enter number 1:
+      <input type="text" id="num1" title="Number 1" /><br /><br />
+
+      Enter number 2:
+      <input type="text" id="num2" title="Number 2" /><br /><br />
     </form>
     <button id="plus">+</button>
     <button id="minus">-</button>
     <button id="mul">*</button>
     <button id="div">/</button>
-    <button id="mod">%</button><br><br>
+    <button id="mod">%</button><br /><br />
     <p id="result"></p>
 
     <script>
       let num1 = document.getElementById("num1");
-       
+
       let num2 = document.getElementById("num2");
 
       let result = document.getElementById("result");
@@ -31,22 +34,22 @@
       //   let n2 = Number(num2);
 
       document.getElementById("plus").addEventListener("click", function () {
-        result.innerText = Number(num1.value)+Number(num2.value);
+        result.innerText = Number(num1.value) + Number(num2.value);
       });
 
       document.getElementById("minus").addEventListener("click", function () {
-        result.innerText = Number(num1.value)-Number(num2.value);
+        result.innerText = Number(num1.value) - Number(num2.value);
       });
 
       document.getElementById("mul").addEventListener("click", function () {
-        result.innerText = Number(num1.value)*Number(num2.value);
+        result.innerText = Number(num1.value) * Number(num2.value);
       });
 
       document.getElementById("div").addEventListener("click", function () {
-        result.innerText = Number(num1.value)/Number(num2.value);
+        result.innerText = Number(num1.value) / Number(num2.value);
       });
       document.getElementById("mod").addEventListener("click", function () {
-        result.innerText = Number(num1.value)%Number(num2.value);
+        result.innerText = Number(num1.value) % Number(num2.value);
       });
     </script>
   </body>
