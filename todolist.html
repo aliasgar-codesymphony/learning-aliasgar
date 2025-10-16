@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List</title>
+    <link rel="stylesheet" href="todolist.css" />
+  </head>
+  <body>
+    <label for="txt1">Enter to do task: </label>
+    <input type="text" id="txt1" size="40px" /><br /><br />
+    <p id="err"></p>
+    <button id="push">Push</button>
+    <button id="pop">pop with index</button>
+
+    <div class="d1">
+      <h2>To Do List</h2>
+      <p id="disp"></p>
+    </div>
+
+    <div class="d2">
+      <h2>Deleted Items</h2>
+      <p id="del"></p>
+    </div>
+
+    <script>
+      const list = [];
+      const listdel = [];
+      let txt1 = document.getElementById("txt1");
+      let disp = document.getElementById("disp");
+      let del = document.getElementById("del");
+      let err = document.getElementById("err");
+      let display = () => {
+        let text = "";
+        for (const i of list) {
+          text += "<hr>" + i;
+        }
+        return text;
+      };
+
+      let deletdItems = () => {
+        let text = "";
+        for (const i of listdel) {
+          text += "<hr>" + i;
+        }
+        return text;
+      };
+
+      document.getElementById("push").addEventListener("click", () => {
+        if (txt1.value == "") {
+          err.style.color = "red";
+          err.innerHTML = "Input field Should not empty";
+          txt1.focus();
+        } else {
+          list.push(txt1.value);
+          //disp.innerHTML += list[list.length - 1] + "<br>";
+          disp.innerHTML = display();
+          txt1.value = "";
+          txt1.focus();
+        }
+      });
+
+      document.getElementById("pop").addEventListener("click", () => {
+        let index = prompt("Enter index to remove:");
+        console.log(index);
+        let deleted = list.splice(index, 1);
+        console.log(list);
+        disp.innerHTML = display();
+
+        listdel.push(deleted);
+        del.innerHTML = deletdItems();
+      });
+    </script>
+  </body>
+</html>

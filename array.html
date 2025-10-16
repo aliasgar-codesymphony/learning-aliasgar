@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Methods</title>
+  </head>
+  <body>
+    Enter element : <input type="text" id="txt1" required />
+    <p id="err"></p>
+    <button id="push">Push</button>
+    <button id="pop">Pop</button>
+    <p id="p1"></p>
+
+    <script>
+      const fruits = [];
+      let p1 = document.getElementById("p1");
+      let txt1 = document.getElementById("txt1");
+      let err = document.getElementById("err");
+      document.getElementById("txt1").addEventListener("input", () => {
+        txt1.value = txt1.value.toLowerCase();
+      });
+
+      document.getElementById("push").addEventListener("click", () => {
+       
+          fruits.push(txt1.value.trim());
+          p1.innerHTML = fruits;
+          txt1.value = "";
+          txt1.focus(); 
+      });
+      document.getElementById("pop").addEventListener("click", () => {
+       
+          fruits.pop();
+          p1.innerHTML = fruits;
+          txt1.value = "";
+          txt1.focus(); 
+      });
+      
+    //   document.getElementById("pop").addEventListener("click", () => {
+    //     if ((txt1.value = " ")) {
+    //       err.style.color = "red";
+    //       err.innerHTML = "Input field Should not empty";
+    //     } else if (fruits.includes(txt1.value)) {
+    //       fruits.pop(txt1.value);
+    //       p1.innerHTML += fruits[fruits.length - 1] + "<br>";
+    //       txt1.value = "";
+    //     }
+    //   });
+
+
+    /* if ((txt1.value = " ")) {
+          err.style.color = "red";
+          err.innerHTML = "Input field Should not empty";
+        } else {
+          fruits.push(txt1.value.trim());
+          p1.innerHTML += display();
+          //txt1.value = "";
+        } */
+    </script>
+  </body>
+</html>

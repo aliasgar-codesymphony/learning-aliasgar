@@ -166,7 +166,7 @@ for (const i of s) {
   console.log(i);
 }
 
-const fruits = {
+/* const fruits = {
   apple: "red",
   orange: "orange",
   banana: "yellow",
@@ -174,8 +174,56 @@ const fruits = {
 
 for (const i in fruits) {
   console.log(i + " : " + fruits[i]);
-}
+} */
 
 myVar = 10;
 console.log(myVar);
 var myVar;
+
+let hello = (val) => "Hello " + val;
+console.log(hello("ABC"));
+
+let sum = (...args) => {
+  let sum = 0;
+  for (let i of args) sum += i;
+  return sum;
+};
+console.log(sum(10, 20, 30, 40, 10));
+
+function sumAll() {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+  }
+  return sum;
+}
+console.log(sumAll(1, 2, 3, 4, 12));
+
+const fruits = ["Mango", "Banana", "Apple"];
+//fruits.length = 2
+console.log(fruits);
+console.log(fruits.at(-2));
+console.log(fruits[0]);
+console.log(fruits.join("-"));
+fruits.pop();
+fruits.push("kiwi");
+fruits.shift();
+fruits.unshift("Cherry");
+console.log(fruits);
+
+fruits[fruits.length] = "Orange";
+console.log(fruits);
+
+fruits[0] = "blueb";
+
+const arr1 = ["FF", "EE"];
+const arr2 = ["AA", "BB", "DD"];
+const myChildren = arr1.concat(arr2);
+console.log(myChildren);
+
+//Search
+
+console.log(fruits.includes("Orange"));
+
+const f2 = ["Mango", "Banana", "Apple"];
+console.log(f2.join("\n"));
