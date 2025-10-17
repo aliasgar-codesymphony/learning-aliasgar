@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events Demo</title>
+    <style>
+        #p1{
+            display: inline;
+            font-size: 24px;
+        }
+    </style>
+  </head>
+  <body>
+    Enter text to convert uppercase :
+    <input type="text" id="txt1" /><br /><br />
+    Enter text to convert in lowercase :<input type="text" id="txt2" /><br><br>
+
+    <p id="p1">Over Mouse to me
+        <p>This is child</p>
+    </p>
+    <script>
+      document.getElementById("txt1").addEventListener("input", function () {
+        this.value = this.value.toUpperCase();
+      });
+
+      document.getElementById("txt2").addEventListener("change", function () {
+        this.value = this.value.toLowerCase();
+      });
+
+      document.getElementById("p1").addEventListener("mouseover", function () {
+        this.innerText = "MouseOver";
+      });
+
+      document.getElementById("p1").addEventListener("mouseout", function () {
+        this.innerText = "MouseOut";
+      });
+
+        document.getElementById("p1").addEventListener("mousedown", function () {
+        this.style.backgroundColor = "Blue";
+        this.innerText = "MouseDown";
+      });
+
+      document.getElementById("p1").addEventListener("mouseup",function(){
+        this.style.backgroundColor = "Green";
+        this.innerText = "MouseUp";
+      });
+      
+      document.getElementById("txt1").addEventListener("keyup",function(){
+            this.style.color = "blue";
+      });
+      document.getElementById("txt2").addEventListener("keydown",function(){
+            this.style.color = "red";
+      });
+    </script>
+  </body>
+</html>

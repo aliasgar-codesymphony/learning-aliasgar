@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Methods</title>
+    <style>
+      * {
+        font-size: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    Enter element : <input type="text" id="txt1" required />
+    <p id="err"></p>
+    <button id="push">Push</button>
+    <button id="pop">Pop</button>
+    <button id="unshift">Unshift</button>
+    <button id="shift">Shift</button>
+    <button id="len">Length</button>
+    <button id="indexof">IndexOf</button>
+    <button id="lastindexof">LastIndexOf</button>
+    <button id="sort">Sort</button>
+    <button id="reverse">Reverse</button>
+    <button id="dessort">Sort in Descending</button>
+    <button id="removeall">RemoveAll</button>
+    <p id="p1"></p>
+
+    <script>
+      const fruits = [];
+      let p1 = document.getElementById("p1");
+      let txt1 = document.getElementById("txt1");
+      let err = document.getElementById("err");
+      document.getElementById("txt1").addEventListener("input", () => {
+        txt1.value = txt1.value.toLowerCase();
+      });
+
+      let display = () => {
+        let text = "";
+        for (const i of fruits) {
+          text += i + "<br>";
+        }
+        return text;
+      };
+
+      window.addEventListener("load", () => {
+        txt1.focus();
+      });
+
+      document.getElementById("push").addEventListener("click", () => {
+        if (txt1.value == "") {
+          err.style.color = "red";
+          err.innerHTML = "Input field Should not empty";
+          txt1.focus();
+        } else {
+          fruits.push(txt1.value.trim());
+          p1.innerHTML = display();
+          txt1.value = "";
+          txt1.focus();
+        }
+      });
+
+      document.getElementById("pop").addEventListener("click", () => {
+        fruits.pop();
+        p1.innerHTML = display();
+      });
+
+      document.getElementById("unshift").addEventListener("click", () => {
+        if (txt1.value == "") {
+          err.style.color = "red";
+          err.innerHTML = "Input field Should not empty";
+          txt1.focus();
+        } else {
+          fruits.unshift(txt1.value.trim());
+          p1.innerHTML = display();
+          txt1.value = "";
+          txt1.focus();
+        }
+      });
+
+      document.getElementById("shift").addEventListener("click", () => {
+        fruits.shift();
+        p1.innerHTML = display();
+      });
+
+      document.getElementById("len").addEventListener("click", () => {
+        alert("Length of array is " + fruits.length);
+      });
+
+      document.getElementById("indexof").addEventListener("click", () => {
+        if (txt1.value == "") {
+          err.style.color = "red";
+          err.innerHTML = "Input field Should not empty";
+          txt1.focus();
+        } else if (fruits.includes(txt1.value.trim())) {
+          let position = fruits.indexOf(txt1.value.trim()) + 1;
+          alert(txt1.value + " is present at position " + position);
+          txt1.value = "";
+          txt1.focus();
+        } else {
+          alert("Sorry element not present in array");
+          txt1.value = "";
+          txt1.focus();
+        }
+      });
+
+      document.getElementById("lastindexof").addEventListener("click", () => {
+        if (txt1.value == "") {
+          err.style.color = "red";
+          err.innerHTML = "Input field Should not empty";
+          txt1.focus();
+        } else if (fruits.includes(txt1.value.trim())) {
+          let position = fruits.lastIndexOf(txt1.value.trim()) + 1;
+          alert(txt1.value + " is present at position " + position);
+          txt1.value = "";
+          txt1.focus();
+        } else {
+          alert("Sorry element not present in array");
+          txt1.value = "";
+          txt1.focus();
+        }
+      });
+
+      document.getElementById("sort").addEventListener("click", () => {
+        fruits.sort();
+        p1.innerHTML = display();
+      });
+
+      document.getElementById("reverse").addEventListener("click", () => {
+        fruits.reverse();
+        p1.innerHTML = display();
+      });
+
+      document.getElementById("dessort").addEventListener("click", () => {
+        fruits.sort();
+        fruits.reverse();
+        p1.innerHTML = display();
+      });
+
+      document.getElementById("removeall").addEventListener("click", () => {
+        fruits.length = 0;
+        p1.innerHTML = display();
+      });
+    </script>
+  </body>
+</html>

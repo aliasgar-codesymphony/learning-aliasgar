@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator Demo</title>
+  </head>
+  <body>
+    <h2>Basic Calc</h2>
+    <br />
+
+    <form>
+      Enter number 1:
+      <input type="text" id="num1" title="Number 1" /><br /><br />
+
+      Enter number 2:
+      <input type="text" id="num2" title="Number 2" /><br /><br />
+    </form>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+    <button id="mul">*</button>
+    <button id="div">/</button>
+    <button id="mod">%</button><br /><br />
+    <p id="result"></p>
+
+    <script>
+      let num1 = document.getElementById("num1");
+
+      let num2 = document.getElementById("num2");
+
+      let result = document.getElementById("result");
+
+      //   let n1 = Number(num1);
+      //   let n2 = Number(num2);
+
+      document.getElementById("plus").addEventListener("click", function () {
+        result.innerText = Number(num1.value) + Number(num2.value);
+      });
+
+      document.getElementById("minus").addEventListener("click", function () {
+        result.innerText = Number(num1.value) - Number(num2.value);
+      });
+
+      document.getElementById("mul").addEventListener("click", function () {
+        result.innerText = Number(num1.value) * Number(num2.value);
+      });
+
+      document.getElementById("div").addEventListener("click", function () {
+        result.innerText = Number(num1.value) / Number(num2.value);
+      });
+      document.getElementById("mod").addEventListener("click", function () {
+        result.innerText = Number(num1.value) % Number(num2.value);
+      });
+    </script>
+  </body>
+</html>

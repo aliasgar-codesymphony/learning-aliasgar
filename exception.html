@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exception handling</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+
+    <h2>try catch with throw</h2>
+    <p>please enter a number between 5 and 10.</p>
+    <!-- <input type="text" id="txt1" /> -->
+    <input id="txt1" type="number" min="5" max="10" step="1">
+    <button onclick="testInput()">Test</button>
+    <p id="msg"></p>
+
+    <script>
+      try {
+        aalert("Welcome");
+      } catch (error) {
+        document.getElementById("demo").innerHTML = error.message;
+      }
+
+      function testInput() {
+       var msg = document.getElementById("msg");
+        let x = document.getElementById("txt1").value;
+        try {
+            
+          if (x.trim() == "") {
+            throw "empty";
+          }
+          
+          if (isNaN(x)) {
+            throw "must a number";
+          } 
+           if (x < 5) {
+            throw "too low";
+          }
+           if (x > 10) {
+            throw "too high";
+          }
+          if(x>=5 && x<=10){
+            throw "proper"
+          }
+          
+        } catch (err) {
+          msg.innerHTML = "Input is " + err;
+        }
+      }
+    </script>
+  </body>
+</html>

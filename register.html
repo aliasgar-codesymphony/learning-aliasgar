@@ -10,10 +10,11 @@
     <div class="container">
       <div>
         <h2 id="head">Sign Up</h2>
-        <form action="link.html" method="post">
+        <form id="myForm">
           <input
             type="text"
             name="txtFirst"
+            id="txtFirst"
             class="wh"
             required
             autofocus
@@ -22,6 +23,7 @@
           <input
             type="text"
             name="txtLast"
+            id="txtLast"
             class="wh"
             required
             autofocus
@@ -30,6 +32,7 @@
           <input
             type="email"
             name="txtEmail"
+            id="txtEmail"
             class="wh"
             required
             placeholder="Email"
@@ -38,15 +41,16 @@
             type="tel"
             maxlength="10"
             pattern="[0-9]{10}"
-            name="phone"
-            id="phone"
+            name="txtPhone"
+            id="txtPhone"
             class="wh"
             required
             placeholder="Mobile No."
           /><br /><br />
           <input
             type="password"
-            name="txtpass"
+            name="txtPass"
+            id="txtPass"
             minlength="8"
             maxlength="16"
             class="wh"
@@ -55,16 +59,212 @@
           /><br /><br />
           <input
             type="password"
-            name="cnfpass"
+            name="cnfPass"
+            id="cnfPass"
             minlength="8"
             maxlength="16"
             class="wh"
             required
             placeholder="Confirm Password"
           /><br /><br />
-          <input type="submit" value="Submit" id="btn" class="wh" />
+          <input
+            type="radio"
+            name="gender"
+            id="male"
+            value="Male"
+            checked
+            required
+          />Male
+          <input
+            type="radio"
+            name="gender"
+            id="female"
+            value="Female"
+          />Female<br /><br />
+
+          <select name="country" id="country" class="wh" required>
+            <option value="" disabled selected>--Select Country--</option>
+            <option value="India">India</option>
+            <option value="Russia">Russia</option>
+            <option value="Australia">Australia</option>
+            <option value="Uk">Uk</option></select
+          ><br /><br />
+
+          <select name="state" id="state" class="wh" required>
+            <option value="" disabled selected>--Select State--</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Goa">Goa</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Rajasthan">Rajasthan</option></select
+          ><br /><br />
+
+          <select name="city" id="city" class="wh" required>
+            <option value="" disabled selected>--Select City--</option>
+            <option value="Jamnagar">Jamnagar</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Rajkot">Rajkot</option>
+            <option value="Surat">Surat</option></select
+          ><br /><br />
+          <textarea
+            name="address"
+            id="address"
+            class="wh"
+            required
+            placeholder="Address"
+          ></textarea
+          ><br /><br />
+          <input
+            type="text"
+            name="birthDate"
+            id="birthDate"
+            class="wh"
+            required
+            placeholder="BirthDate"
+            onfocus="(this.type='date')"
+          /><br /><br />
+          <input
+            type="submit"
+            value="Submit"
+            id="btn"
+            class="wh"
+            onclick="formSubmit()"
+          />
         </form>
       </div>
     </div>
+
+    <table border="1" cellpadding="10px" cellspacing="0px" id="myTable">
+      <tr>
+        <th>FirstName</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Password</th>
+        <th>Confirm Password</th>
+        <th>Gender</th>
+        <th>Country</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>BirthDate</th>
+      </tr>
+    </table>
+
+    <script>
+      function formSubmit() {
+        event.preventDefault();
+
+        const myForm = document.getElementById("myForm");
+
+        const first = document.getElementById("txtFirst");
+        const last = document.getElementById("txtLast");
+        const email = document.getElementById("txtEmail");
+        const phone = document.getElementById("txtPhone");
+        const password = document.getElementById("txtPass");
+        const cnfPass = document.getElementById("cnfPass");
+        var gender = document.getElementsByName("gender");
+        const country = document.getElementById("country");
+        const state = document.getElementById("state");
+        const city = document.getElementById("city");
+        const address = document.getElementById("address");
+        const birthDate = document.getElementById("birthDate");
+        var gen;
+        if (gender[0].checked == true) {
+          gen = "Male";
+        } else {
+          //console.log("Female");
+          gen = "Female";
+        }
+
+        const table = document.getElementById("myTable");
+
+        const newRow = `
+        <tr>
+          <td>${first.value}</td>
+          <td>${last.value}</td>
+          <td>${email.value}</td>
+          <td>${phone.value}</td>
+          <td>${password.value}</td>
+          <td>${cnfPass.value}</td>
+          <td>${gen}</td>
+          <td>${country.value}</td>
+          <td>${state.value}</td>
+          <td>${city.value}</td>
+          <td>${address.value}</td>
+          <td>${birthDate.value}</td>
+        </tr>
+        `;
+        //table.innerHTML += newRow;
+        table.insertAdjacentHTML("beforeend", newRow);
+        myForm.reset();
+      }
+    </script>
   </body>
 </html>
+
+<!-- const table = document.getElementById("myTable");
+
+        const newRow = table.insertRow();
+
+        newRow.insertCell().textContent = first;
+        newRow.insertCell().textContent = last;
+        newRow.insertCell().textContent = email;
+        newRow.insertCell().textContent = phone;
+        newRow.insertCell().textContent = password;
+        newRow.insertCell().textContent = cnfPass;
+        newRow.insertCell().textContent = gen;
+        newRow.insertCell().textContent = country;
+        newRow.insertCell().textContent = state;
+        newRow.insertCell().textContent = city;
+        newRow.insertCell().textContent = address;
+        newRow.insertCell().textContent = birthDate; -->
+
+<!-- 
+console.log(first);
+        console.log(last);
+        console.log(email);
+        console.log(phone);
+        console.log(password);
+        console.log(cnfPass);
+        console.log(gen);
+        console.log(country);
+        console.log(state);
+        console.log(city);
+        console.log(address);
+        console.log(birthDate); -->
+
+<!-- function formSubmit(){
+        event.preventDefault();
+        const first = document.getElementById("txtFirst").value;
+        const last = document.getElementById("txtLast").value;
+        const email = document.getElementById("txtEmail").value;
+        const phone = document.getElementById("txtPhone").value;
+        const password = document.getElementById("txtPass").value;
+        const cnfPass = document.getElementById("cnfPass").value;
+        console.log(first);
+        console.log(last);
+        console.log(email);
+        console.log(phone);
+        console.log(password);
+        console.log(cnfPass);
+      } -->
+
+<!-- 
+      const myForm = document.getElementById("myForm");
+
+      myForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const first = document.getElementById("txtFirst").value;
+        const last = document.getElementById("txtLast").value;
+        const email = document.getElementById("txtEmail").value;
+        const phone = document.getElementById("txtPhone").value;
+        const password = document.getElementById("txtPass").value;
+        const cnfPass = document.getElementById("cnfPass").value;
+        console.log(first);
+        console.log(last);
+        console.log(email);
+        console.log(phone);
+        console.log(password);
+        console.log(cnfPass);
+       
+      }); -->
