@@ -62,13 +62,16 @@
 
       document.getElementById("pop").addEventListener("click", () => {
         let index = prompt("Enter index to remove:");
-        console.log(index);
-        let deleted = list.splice(index, 1);
-        console.log(list);
-        disp.innerHTML = display();
-
-        listdel.push(deleted);
-        del.innerHTML = deletdItems();
+        //console.log(index);
+        if (index >= list.length) {
+          alert("This index not present");
+        } else {
+          let deleted = list.splice(index, 1);
+          //console.log(list);
+          disp.innerHTML = display();
+          listdel.push(deleted);
+          del.innerHTML = deletdItems();
+        }
       });
     </script>
   </body>
