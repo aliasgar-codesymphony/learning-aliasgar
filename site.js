@@ -26,19 +26,49 @@ const products = [
     total: 0,
   },
 ];
+const tableBody = document.querySelector("#myTable tbody");
 
-let increment = (index) => {
+let increment = (index, event) => {
   products[index].qty++;
   console.log(products[index].qty);
-  renderProducts();
+  //renderProducts();
+  display(index);
 };
-let decrement = (index) => {
+let decrement = (index, event) => {
   if (products[index].qty > 1) {
     products[index].qty--;
-    renderProducts();
+    //renderProducts();
+    display(index);
   }
 };
-const tableBody = document.querySelector("#myTable tbody");
+
+function display(indexfun) {
+  tableBody.innerHTML = "";
+  products.forEach((i, index) => {
+    if (indexfun == index) {
+      const newRow = document.createElement("tr");
+      newRow.innerHTML = `
+  <tr>
+        <td>${i.id}</td>
+          <td >${i.name}</td>
+          <td><img src="${i.image}"></td>
+          <td>${i.price}</td>
+          <td><button class="minus" onclick="decrement(${index},event)">-</button><label class="lblqty">${
+        i.qty
+      }</label><button class="plus" data-id="${
+        i.id
+      }" id="plus" onclick="increment(${index},event)">+</button></td>
+          <td>${i.price * i.qty}</td>
+    </tr>
+    
+`;
+      console.log(newRow);
+      tableBody.appendChild(newRow);
+    } else {
+      return false;
+    }
+  });
+}
 
 function renderProducts() {
   tableBody.innerHTML = "";
@@ -50,11 +80,11 @@ function renderProducts() {
           <td >${i.name}</td>
           <td><img src="${i.image}"></td>
           <td>${i.price}</td>
-          <td><button class="minus" onclick="decrement(${index})">-</button><label class="lblqty">${
+          <td><button class="minus" onclick="decrement(${index},event)">-</button><label class="lblqty">${
       i.qty
     }</label><button class="plus" data-id="${
       i.id
-    }" id="plus" onclick="increment(${index})">+</button></td>
+    }" id="plus" onclick="increment(${index},event)">+</button></td>
           <td>${i.price * i.qty}</td>
     </tr>
 `;
