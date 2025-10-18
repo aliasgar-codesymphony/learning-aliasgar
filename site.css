@@ -66,8 +66,8 @@ img {
   height: 100px;
 }
 
-#minus,
-#plus {
+.minus,
+.plus {
   font-size: 30px;
   border: 1px solid black;
   margin: 20px;

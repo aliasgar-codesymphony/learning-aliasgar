@@ -27,18 +27,46 @@ const products = [
   },
 ];
 
-const table = document.getElementById("myTable");
+const tableBody = document.querySelector("#myTable tbody");
 
-products.forEach((i) => {
-  const newRow = `
+function renderProducts() {
+  tableBody.innerHTML = "";
+  products.forEach((i) => {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
    <tr>
           <td>${i.id}</td>
-          <td>${i.name}</td>
+          <td >${i.name}</td>
           <td><img src="${i.image}"></td>
           <td>${i.price}</td>
-          <td><button id="minus">-</button>${i.qty}<button id="plus">+</button></td>
+          <td><button class="minus" data-id="${i.id}">-</button><label class="lblqty">${i.qty}</label><button class="plus" data-id="${i.id}">+</button></td>
           <td>${i.total}</td>
     </tr>
 `;
-  table.insertAdjacentHTML("beforeend", newRow);
+    tableBody.appendChild(newRow);
+  });
+}
+
+renderProducts();
+
+tableBody.addEventListener("click", (event) => {
+  const target = event.target;
+  console.log(target);
+  console.log(target.classList);
+  if (target.classList.contains("plus") || target.classList.contains("minus")) {
+    const productId = parseInt(target.getAttribute("data-id"));
+    const product = products.find((p) => p.id === productId);
+
+    if (product) {
+      if (target.classList.contains("plus")) {
+        product.qty++;
+        product.total = product.qty * product.price;
+      } else if (target.classList.contains("minus") && product.qty > 0) {
+        product.qty--;
+        product.total = product.qty * product.price;
+      }
+      //console.log(product.qty*product.price);
+      renderProducts();
+    }
+  }
 });
