@@ -5,16 +5,16 @@ const products = [
     image:
       "https://img.freepik.com/free-psd/close-up-delicious-apple_23-2151868338.jpg?semt=ais_hybrid&w=740&q=80",
     price: 10,
-    qty: 1,
-    total: 10,
+    qty: 0,
+    total: 0,
   },
   {
     id: 2,
     name: "Mango",
     image: "https://kokankanya.com/wp-content/uploads/2023/04/Hapus_Mango.jpg",
     price: 15,
-    qty: 1,
-    total: 15,
+    qty: 0,
+    total: 0,
   },
   {
     id: 3,
@@ -22,40 +22,63 @@ const products = [
     image:
       "https://media.istockphoto.com/id/164142758/photo/single-pear.jpg?s=612x612&w=0&k=20&c=bTXnXhqVLSsAqX6UVdNuhuXS_U3XvHwZ1NpIgl95S6c=",
     price: 6,
-    qty: 1,
-    total: 6,
+    qty: 0,
+    total: 0,
   },
 ];
+let retrive = localStorage.getItem("myArray");
+let parsed = JSON.parse(retrive);
+if (parsed === null) {
+  localStorage.setItem("myArray", JSON.stringify(products));
+}
+
 const tableBody = document.querySelector("#myTable tbody");
 
 let increment = (index) => {
+  //localStorage.setItem("myArray", JSON.stringify(products));
   let row = tableBody.rows[index];
   let lb = row.querySelector("label");
   let tds = row.getElementsByTagName("td");
 
-  lb.innerHTML = ++products[index].qty;
-  tds[5].innerHTML = tds[3].innerHTML * lb.innerHTML;
+  retrive = localStorage.getItem("myArray");
+  parsed = JSON.parse(retrive);
+  //  console.log(parsed[index].id);
+  //products[index].qty;
+  lb.innerHTML = ++parsed[index].qty;
+
+  parsed[index].total = parsed[index].price * parsed[index].qty;
+  tds[5].innerHTML = parsed[index].total;
 
   console.log(lb.innerHTML);
   console.log(tds[5].innerHTML);
+  localStorage.setItem("myArray", JSON.stringify(parsed));
 };
+
 let decrement = (index) => {
-  if (products[index].qty > 1) {
+  retrive = localStorage.getItem("myArray");
+  parsed = JSON.parse(retrive);
+  if (parsed[index].qty > 0) {
     let row = tableBody.rows[index];
     let lb = row.querySelector("label");
     let tds = row.getElementsByTagName("td");
 
-    lb.innerHTML = --products[index].qty;
-    tds[5].innerHTML = tds[3].innerHTML * lb.innerHTML;
+    lb.innerHTML = --parsed[index].qty;
+
+    parsed[index].total = parsed[index].price * parsed[index].qty;
+    tds[5].innerHTML = parsed[index].total;
 
     console.log(lb.innerHTML);
     console.log(tds[5].innerHTML);
   }
+  localStorage.setItem("myArray", JSON.stringify(parsed));
 };
 
 function renderProducts() {
   tableBody.innerHTML = "";
-  products.forEach((i, index) => {
+  retrive = localStorage.getItem("myArray");
+  parsed = JSON.parse(retrive);
+
+  parsed.forEach((i, index) => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
   <tr>
