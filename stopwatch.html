@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Watch</title>
+  </head>
+  <body>
+    <center>
+      <label id="demo">0</label><br /><br />
+      <button id="start">Start</button>
+      <button id="restart">Restart</button>
+      <button id="resume">Resume</button>
+    </center>
+    <script>
+      let counter = 0;
+      let timeout;
+      let timer = 0;
+      let count = () => {
+        document.getElementById("demo").innerHTML = counter;
+        counter++;
+        timeout = setTimeout(count, 1000);
+        console.log(timeout);
+      };
+      document.getElementById("start").addEventListener("click", () => {
+        if (!timer) {
+          console.log(!timer);
+          timer = 1;
+          count();
+        }
+      });
+      document.getElementById("resume").addEventListener("click", () => {
+        if (timer) {
+          timer = 0;
+          console.log(timer);
+          clearTimeout(timeout);
+        }
+      });
+
+      document.getElementById("restart").addEventListener("click", () => {
+        clearTimeout(timeout);
+        timeout = null;
+        timer = 1;
+        counter = 0;
+        count();
+      });
+    </script>
+  </body>
+</html>
