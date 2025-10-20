@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+  </head>
+  <body>
+    <h2>Login Page</h2>
+    <form action="success.html" id="myform">
+      Enter Username: <input type="text" id="username" /><br /><br />
+      Enter Password: <input type="password" id="password" /><br /><br />
+      <input type="submit" id="login" value="Login" />
+    </form>
+    <script>
+      let myform = document.getElementById("myform");
+      let username = document.getElementById("username");
+      let password = document.getElementById("password");
+
+      window.addEventListener("load", () => {
+        let retrive = localStorage.getItem("myobj");
+        let retrived = JSON.parse(retrive);
+        if (retrived.username == "Aliasgar" && retrived.password == "12345") {
+          window.location.href = "success.html";
+        } 
+      });
+      document.getElementById("login").addEventListener("click", (event) => {
+        event.preventDefault();
+        let obj = {
+          username: username.value,
+          password: password.value,
+        };
+        console.log(obj);
+        localStorage.setItem("myobj", JSON.stringify(obj));
+
+        let retrive = localStorage.getItem("myobj");
+        let retrived = JSON.parse(retrive);
+        if (retrived.username == "Aliasgar" && retrived.password == "12345") {
+          myform.submit();
+        } else {
+          alert("username or password not exist");
+        }
+      });
+    </script>
+  </body>
+</html>

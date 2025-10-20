@@ -8,20 +8,25 @@
 
   <body>
     <p id="demo"></p>
-    <button id="click">Remove</button>
+    <button id="click">Click</button>
     <script>
-      localStorage.clear();
-      localStorage.clickcount = 0;
       let p = document.getElementById("demo");
-      p.innerHTML = localStorage.clickcount;
-      document.getElementById("click").addEventListener("click", () => {
-        if (localStorage.clickcount) {
-          localStorage.clickcount = Number(localStorage.clickcount) + 1;
-        } else {
-          localStorage.clickcount = 1;
-        }
-        p.innerHTML = localStorage.clickcount;
-      });
+      localStorage.clear();
+      //const fruits = ["Apple", "mango", "cherry"];
+      person = {
+        name: "Raj",
+        age: 22,
+        gender: "male",
+      };
+
+      /* localStorage.setItem("myArray", JSON.stringify(fruits));
+      const retrive = localStorage.getItem("myArray");
+      p.innerHTML = JSON.parse(retrive); */
+
+      localStorage.setItem("myobj", JSON.stringify(person));
+      const retrive = localStorage.getItem("myobj");
+      const retrived = JSON.parse(retrive);
+      p.innerHTML = retrived.name + " " + retrived.age + " " + retrived.gender;
     </script>
   </body>
 </html>
