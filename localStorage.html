@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage demo</title>
+  </head>
+
+  <body>
+    <p id="demo"></p>
+    <button id="click">Remove</button>
+    <script>
+      localStorage.clear();
+      localStorage.clickcount = 0;
+      let p = document.getElementById("demo");
+      p.innerHTML = localStorage.clickcount;
+      document.getElementById("click").addEventListener("click", () => {
+        if (localStorage.clickcount) {
+          localStorage.clickcount = Number(localStorage.clickcount) + 1;
+        } else {
+          localStorage.clickcount = 1;
+        }
+        p.innerHTML = localStorage.clickcount;
+      });
+    </script>
+  </body>
+</html>

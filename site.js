@@ -6,7 +6,7 @@ const products = [
       "https://img.freepik.com/free-psd/close-up-delicious-apple_23-2151868338.jpg?semt=ais_hybrid&w=740&q=80",
     price: 10,
     qty: 1,
-    total: 0,
+    total: 10,
   },
   {
     id: 2,
@@ -14,7 +14,7 @@ const products = [
     image: "https://kokankanya.com/wp-content/uploads/2023/04/Hapus_Mango.jpg",
     price: 15,
     qty: 1,
-    total: 0,
+    total: 15,
   },
   {
     id: 3,
@@ -23,52 +23,35 @@ const products = [
       "https://media.istockphoto.com/id/164142758/photo/single-pear.jpg?s=612x612&w=0&k=20&c=bTXnXhqVLSsAqX6UVdNuhuXS_U3XvHwZ1NpIgl95S6c=",
     price: 6,
     qty: 1,
-    total: 0,
+    total: 6,
   },
 ];
 const tableBody = document.querySelector("#myTable tbody");
 
-let increment = (index, event) => {
-  products[index].qty++;
-  console.log(products[index].qty);
-  //renderProducts();
-  display(index);
+let increment = (index) => {
+  let row = tableBody.rows[index];
+  let lb = row.querySelector("label");
+  let tds = row.getElementsByTagName("td");
+
+  lb.innerHTML = ++products[index].qty;
+  tds[5].innerHTML = tds[3].innerHTML * lb.innerHTML;
+
+  console.log(lb.innerHTML);
+  console.log(tds[5].innerHTML);
 };
-let decrement = (index, event) => {
+let decrement = (index) => {
   if (products[index].qty > 1) {
-    products[index].qty--;
-    //renderProducts();
-    display(index);
+    let row = tableBody.rows[index];
+    let lb = row.querySelector("label");
+    let tds = row.getElementsByTagName("td");
+
+    lb.innerHTML = --products[index].qty;
+    tds[5].innerHTML = tds[3].innerHTML * lb.innerHTML;
+
+    console.log(lb.innerHTML);
+    console.log(tds[5].innerHTML);
   }
 };
-
-function display(indexfun) {
-  tableBody.innerHTML = "";
-  products.forEach((i, index) => {
-    if (indexfun == index) {
-      const newRow = document.createElement("tr");
-      newRow.innerHTML = `
-  <tr>
-        <td>${i.id}</td>
-          <td >${i.name}</td>
-          <td><img src="${i.image}"></td>
-          <td>${i.price}</td>
-          <td><button class="minus" onclick="decrement(${index},event)">-</button><label class="lblqty">${
-        i.qty
-      }</label><button class="plus" data-id="${
-        i.id
-      }" id="plus" onclick="increment(${index},event)">+</button></td>
-          <td>${i.price * i.qty}</td>
-    </tr>
-    
-`;
-      console.log(newRow);
-      tableBody.appendChild(newRow);
-    } else {
-      return false;
-    }
-  });
-}
 
 function renderProducts() {
   tableBody.innerHTML = "";
@@ -80,12 +63,8 @@ function renderProducts() {
           <td >${i.name}</td>
           <td><img src="${i.image}"></td>
           <td>${i.price}</td>
-          <td><button class="minus" onclick="decrement(${index},event)">-</button><label class="lblqty">${
-      i.qty
-    }</label><button class="plus" data-id="${
-      i.id
-    }" id="plus" onclick="increment(${index},event)">+</button></td>
-          <td>${i.price * i.qty}</td>
+          <td ><button class="minus" onclick="decrement(${index})">-</button><label >${i.qty}</label><button class="plus" data-id="${i.id}" id="plus" onclick="increment(${index})">+</button></td>
+          <td>${i.total}</td>
     </tr>
 `;
     console.log(newRow);
