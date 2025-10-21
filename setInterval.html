@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval Demo</title>
+  </head>
+  <body>
+    <!-- <p id="p1"></p>
+    <button id="stop">Stop</button> -->
+    <center>
+      <div id="time">
+        <label id="hr">00</label><label> : </label> <label id="min">00</label
+        ><label> : </label> <label id="sec">00</label><label> : </label>
+        <label id="milisec">00</label>
+      </div>
+      <button id="btnStart">Start</button>
+      <button id="btnStop">Stop</button>
+      <button id="btnReset">Reset</button>
+      <button id="btnSave">Save</button>
+
+      <br /><br />
+      <label id="lblSave"></label>
+    </center>
+    <script>
+      let sound = new Audio("./sound.mp3");
+
+      let btnStart = document.getElementById("btnStart");
+      let btnStop = document.getElementById("btnStop");
+      let btnReset = document.getElementById("btnReset");
+
+      let btnSave = document.getElementById("btnSave");
+      let lblSave = document.getElementById("lblSave");
+
+      let hour = 0;
+      let minute = 0;
+      let second = 0;
+      let mili = 0;
+      let isRunning = false;
+      let timeoutId;
+      btnStart.addEventListener("click", () => {
+        isRunning = true;
+        //stopWatch();
+        timeoutId = setInterval(stopWatch, 1000);
+        btnStart.disabled = true;
+      });
+
+      btnStop.addEventListener("click", () => {
+        isRunning = false;
+        sound.pause();
+        btnStart.disabled = false;
+      });
+
+      btnReset.addEventListener("click", () => {
+        sound.pause();
+        clearInterval(timeoutId);
+        isRunning = false;
+        hour = 0;
+        minute = 0;
+        second = 0;
+        count = 0;
+        document.getElementById("hr").innerHTML = "00";
+        document.getElementById("min").innerHTML = "00";
+        document.getElementById("sec").innerHTML = "00";
+        document.getElementById("milisec").innerHTML = "00";
+        btnStart.disabled = false;
+      });
+
+      btnSave.addEventListener("click", () => {
+        let hr = document.getElementById("hr").innerHTML;
+        let min = document.getElementById("min").innerHTML;
+        let sec = document.getElementById("sec").innerHTML;
+        let mili = document.getElementById("milisec").innerHTML;
+        saveString = hr + ":" + min + ":" + sec + ":" + mili;
+        lblSave.innerHTML += saveString + "</br>";
+        localStorage.setItem("time", saveString);
+      });
+
+      function stopWatch() {
+        if (isRunning) {
+          ++second;
+          console.log(second);
+          if (second == 60) {
+            minute++;
+            second = 0;
+          }
+          if (minute == 60) {
+            hour++;
+            minute = 0;
+            second = 0;
+          }
+
+          let hrString = hour;
+          let minString = minute;
+          let secString = second;
+
+          if (hour < 10) {
+            hrString = "0" + hrString;
+          }
+          if (minute < 10) {
+            minString = "0" + minString;
+          }
+          if (second < 10) {
+            secString = "0" + secString;
+          }
+
+          document.getElementById("hr").innerHTML = hrString;
+          document.getElementById("min").innerHTML = minString;
+          document.getElementById("sec").innerHTML = secString;
+          //document.getElementById("milisec").innerHTML = miliString;
+          //console.log(timeoutId);
+        }
+      }
+
+      /* p1 = document.getElementById("p1");
+      let id = setInterval(() => {
+        p1.innerHTML += "Hello ";
+      }, 1000);
+
+      document.getElementById("stop").addEventListener("click", () => {
+        clearInterval(id);
+      }); */
+    </script>
+  </body>
+</html>

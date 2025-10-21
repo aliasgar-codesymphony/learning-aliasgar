@@ -227,3 +227,7 @@ console.log(fruits.includes("Orange"));
 
 const f2 = ["Mango", "Banana", "Apple"];
 console.log(f2.join("\n"));
+
+let id = setInterval(() => {
+  console.log("Hello");
+}, 1000);
