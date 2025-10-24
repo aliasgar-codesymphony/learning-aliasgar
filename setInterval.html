@@ -59,6 +59,9 @@
       let mili = 0;
       let isRunning = false;
       let timeoutId;
+      let time = [];
+      let no = 0;
+      let saveString = "";
 
       if (
         hr.innerHTML == "00" &&
@@ -106,8 +109,19 @@
         lblSave.innerHTML = "";
         btnStop.disabled = true;
         btnReset.disabled = true;
+
+        time = [];
+        localStorage.setItem("mylap", JSON.stringify(time));
+        tableBody.innerHTML = "";
+        no = 0;
+        saveString = "";
       });
-      let no = 0;
+
+      window.addEventListener("load", () => {
+        time = [];
+        localStorage.setItem("mylap", JSON.stringify(time));
+      });
+
       btnSave.addEventListener("click", () => {
         no++;
         saveString =
@@ -119,15 +133,20 @@
           ":" +
           milisec.innerHTML;
         //lblSave.innerHTML += saveString + "</br>";
-        //localStorage.setItem("time", saveString);
+
+        time.push({ id: no, lap: saveString });
+        localStorage.setItem("mylap", JSON.stringify(time));
         let row = document.createElement("tr");
         row.innerHTML = `
         <tr>
             <td>${no}</td>
             <td>${saveString}</td>
-        </tr>
+        </tr> 
         `;
         tableBody.appendChild(row);
+        let retrive = localStorage.getItem("mylap");
+        let parsed = JSON.parse(retrive);
+        console.log(parsed[0] + " " + parsed[1]);
       });
 
       function stopWatch() {
