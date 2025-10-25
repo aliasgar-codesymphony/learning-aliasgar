@@ -228,6 +228,45 @@ console.log(fruits.includes("Orange"));
 const f2 = ["Mango", "Banana", "Apple"];
 console.log(f2.join("\n"));
 
-let id = setInterval(() => {
+/* let id = setInterval(() => {
   console.log("Hello");
 }, 1000);
+ */
+
+function add(a, b) {
+  console.log(a + b);
+}
+
+function calldemo(a, b, myadd) {
+  myadd(a, b);
+}
+
+calldemo(10, 20, add);
+
+/* function getData(id, funcall) {
+  console.log(id);
+  setTimeout(() => {
+    funcall();
+  }, 2000);
+} */
+
+//callback hell
+/*  getData(1, () => {
+  getData(2, () => {
+    getData(3, () => {
+      console.log("success");
+    });
+  });
+}); 
+ */
+//console.log(process.memoryUsage());
+
+/* let promise = new Promise((res, rej) => {
+  getData(12, () => {
+    res("success");
+    console.log(promise);
+  });
+});
+ */
+
+
