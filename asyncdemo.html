@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await demo</title>
+  </head>
+  <body>
+    <p id="p1"></p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+    <script>
+      let p1 = document.getElementById("p1");
+      let p2 = document.getElementById("p2");
+      async function myfun() {
+        let promise = new Promise((res) => {
+          setTimeout(() => {
+            res("Hello");
+          }, 3000);
+        });
+        p1.innerHTML = await promise;
+        p2.innerHTML = "execute after hello";
+      }
+      myfun();
+      p3.innerHTML = "this will immediately execute";
+
+      /* 
+      myfun().then((value) => {
+        p1.innerHTML = value;
+      }); */
+    </script>
+  </body>
+</html>

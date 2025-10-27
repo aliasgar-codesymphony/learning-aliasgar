@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LocalStorage demo</title>
+  </head>
+
+  <body>
+    <p id="demo"></p>
+    <button id="click">Click</button>
+    <script>
+      let p = document.getElementById("demo");
+      localStorage.clear();
+      //const fruits = ["Apple", "mango", "cherry"];
+      person = {
+        name: "Raj",
+        age: 22,
+        gender: "male",
+      };
+
+      /* localStorage.setItem("myArray", JSON.stringify(fruits));
+      const retrive = localStorage.getItem("myArray");
+      p.innerHTML = JSON.parse(retrive); */
+
+      localStorage.setItem("myobj", JSON.stringify(person));
+      const retrive = localStorage.getItem("myobj");
+      const retrived = JSON.parse(retrive);
+      p.innerHTML = retrived.name + " " + retrived.age + " " + retrived.gender;
+    </script>
+  </body>
+</html>

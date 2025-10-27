@@ -1,0 +1,2 @@
+Fetch API allow to make HTTP request to server.<br>
+Fetch replaces XMLHttpRequest which older way to make HTTP request.

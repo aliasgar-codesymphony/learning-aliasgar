@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Change</title>
+  </head>
+  <body>
+    <h2 id="text">Welcome</h2>
+
+    <button id="hi">Hii</button>
+    <button id="hello">Hello</button>
+    <button id="bye">Bye</button>
+
+    <script>
+      const text = document.getElementById("text");
+      document.getElementById("hi").addEventListener("click", function () {
+        text.innerHTML = "Hii";
+        text.style.backgroundColor = "Red";
+      });
+      document.getElementById("hello").addEventListener("click", function () {
+        text.innerHTML = "Hello";
+        text.style.backgroundColor = "blue";
+      });
+      document.getElementById("bye").addEventListener("click", function () {
+        text.innerHTML = "Bye";
+        text.style.backgroundColor = "yellow";
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setInterval Demo</title>
+    <style>
+      * {
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <p id="p1"></p>
+    <button id="stop">Stop</button> -->
+    <center>
+      <div id="time">
+        <label id="hr">00</label><label> : </label> <label id="min">00</label
+        ><label> : </label> <label id="sec">00</label><label> : </label>
+        <label id="milisec">00</label>
+      </div>
+      <button id="btnStart">Start</button>
+      <button id="btnStop">Stop</button>
+      <button id="btnReset">Reset</button>
+      <button id="btnSave">Save</button>
+
+      <br /><br />
+      <label id="lblSave"></label><br />
+
+      <table border="1" cellpadding="10" cellspacing="0" id="myTable">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Laps</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </center>
+    <script>
+      let sound = new Audio("./sound.mp3");
+
+      let btnStart = document.getElementById("btnStart");
+      let btnStop = document.getElementById("btnStop");
+      let btnReset = document.getElementById("btnReset");
+      let btnSave = document.getElementById("btnSave");
+      let lblSave = document.getElementById("lblSave");
+
+      let hr = document.getElementById("hr");
+      let min = document.getElementById("min");
+      let sec = document.getElementById("sec");
+      let milisec = document.getElementById("milisec");
+
+      let tableBody = document.querySelector("#myTable tbody");
+
+      let hour = 0;
+      let minute = 0;
+      let second = 0;
+      let mili = 0;
+      let isRunning = false;
+      let timeoutId;
+      let time = [];
+      let no = 0;
+      let saveString = "";
+
+      if (
+        hr.innerHTML == "00" &&
+        min.innerHTML == "00" &&
+        sec.innerHTML == "00" &&
+        milisec.innerHTML == "00"
+      ) {
+        btnStop.disabled = true;
+        btnReset.disabled = true;
+        btnSave.disabled = true;
+      }
+      btnStart.addEventListener("click", () => {
+        isRunning = true;
+        //stopWatch();
+        sound.play();
+        timeoutId = setInterval(stopWatch, 10);
+        btnStart.disabled = true;
+        btnSave.disabled = false;
+        btnStop.disabled = false;
+        btnReset.disabled = false;
+      });
+
+      btnStop.addEventListener("click", () => {
+        isRunning = false;
+        sound.pause();
+        btnStart.disabled = false;
+        btnSave.disabled = true;
+      });
+
+      btnReset.addEventListener("click", () => {
+        sound.pause();
+        clearInterval(timeoutId);
+        isRunning = false;
+        hour = 0;
+        minute = 0;
+        second = 0;
+        count = 0;
+        hr.innerHTML = "00";
+        min.innerHTML = "00";
+        sec.innerHTML = "00";
+        milisec.innerHTML = "00";
+
+        btnStart.disabled = false;
+        btnSave.disabled = true;
+        lblSave.innerHTML = "";
+        btnStop.disabled = true;
+        btnReset.disabled = true;
+
+        time = [];
+        localStorage.setItem("mylap", JSON.stringify(time));
+        tableBody.innerHTML = "";
+        no = 0;
+        saveString = "";
+      });
+
+      window.addEventListener("load", () => {
+        time = [];
+        localStorage.setItem("mylap", JSON.stringify(time));
+      });
+
+      btnSave.addEventListener("click", () => {
+        no++;
+        saveString =
+          hr.innerHTML +
+          ":" +
+          min.innerHTML +
+          ":" +
+          sec.innerHTML +
+          ":" +
+          milisec.innerHTML;
+        //lblSave.innerHTML += saveString + "</br>";
+
+        time.push({ id: no, lap: saveString });
+        localStorage.setItem("mylap", JSON.stringify(time));
+        let row = document.createElement("tr");
+        row.innerHTML = `
+        <tr>
+            <td>${no}</td>
+            <td>${saveString}</td>
+        </tr> 
+        `;
+        tableBody.appendChild(row);
+        let retrive = localStorage.getItem("mylap");
+        let parsed = JSON.parse(retrive);
+        console.log(parsed[0] + " " + parsed[1]);
+      });
+
+      function stopWatch() {
+        if (isRunning) {
+          mili++;
+          if (mili == 100) {
+            ++second;
+            mili = 0;
+          }
+          if (second == 60) {
+            minute++;
+            second = 0;
+          }
+          if (minute == 60) {
+            hour++;
+            minute = 0;
+            second = 0;
+          }
+
+          let hrString = hour;
+          let minString = minute;
+          let secString = second;
+          let miliString = mili;
+
+          if (hour < 10) {
+            hrString = "0" + hrString;
+          }
+          if (minute < 10) {
+            minString = "0" + minString;
+          }
+          if (second < 10) {
+            secString = "0" + secString;
+          }
+          if (mili < 10) {
+            miliString = "0" + miliString;
+          }
+          hr.innerHTML = hrString;
+          min.innerHTML = minString;
+          sec.innerHTML = secString;
+          milisec.innerHTML = miliString;
+          //console.log(timeoutId);
+        }
+      }
+
+      /* p1 = document.getElementById("p1");
+      let id = setInterval(() => {
+        p1.innerHTML += "Hello ";
+      }, 1000);
+
+      document.getElementById("stop").addEventListener("click", () => {
+        clearInterval(id);
+      }); */
+    </script>
+  </body>
+</html>
