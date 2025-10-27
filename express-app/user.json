@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Raj",
+    "hobbies": ["Travelling", "Writing"],
+    "isActive": true
+  },
+  {
+    "id": 2,
+    "name": "John",
+    "hobbies": ["Cricket", "Reading", "Programming"],
+    "isActive": false
+  },
+  {
+    "id": 3,
+    "name": "Aakash",
+    "hobbies": ["Reading", "Football"],
+    "isActive": true
+  },
+  {
+    "id": 4,
+    "name": "dharmik",
+    "hobbies": ["Reading", "Travelling", "Cricket"],
+    "isActive": false
+  },
+  {
+    "id": 5,
+    "name": "Sahil",
+    "hobbies": ["Badminton", "Writing"],
+    "isActive": true
+  }
+]
