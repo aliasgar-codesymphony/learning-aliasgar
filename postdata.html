@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Post Demo</title>
+  </head>
+  <body>
+    <form method="post">
+      Enter username: <input type="text" id="name" /><br /><br />
+      Enter email: <input type="email" id="email" /><br /><br />
+      <input type="button" onclick="postData()" value="Submit" />
+    </form>
+
+    <script>
+      async function postData() {
+        //let myForm = document.getElementById("myForm");
+        let uname = document.getElementById("name").value;
+        let uemail = document.getElementById("email").value;
+        let user = {
+          name: uname,
+          email: uemail,
+        };
+        //const data = new FormData(myForm);
+        try {
+          const response = await fetch("http://localhost:5000/postdata", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            //body:data
+            body: JSON.stringify(user),
+          });
+          const data = await response.text();
+          //console.log(data);
+          if (response.ok) {
+            alert(data);
+          } else {
+            alert("Something went wrong");
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    </script>
+  </body>
+</html>
