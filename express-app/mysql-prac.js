@@ -14,6 +14,14 @@ const conn = mysql2.createConnection({
   database: "mydb",
 });
 
+conn.connect((err) => {
+  if (err) {
+    console.log("Error in connecting to MySQL");
+  } else {
+    console.log("Connected to MySQL");
+  }
+});
+
 app.get("/", (req, res) => {
   res.send("This is mysql practice");
 });
@@ -154,6 +162,7 @@ app.get("/users", (req, res) => {
           <th>id</th>
           <th>name</th>
           <th>email</th>
+          
         </tr>
       `;
       results.forEach((i) => {
@@ -162,6 +171,7 @@ app.get("/users", (req, res) => {
           <td>${i.id}</td>
           <td>${i.name}</td>
           <td>${i.email}</td>
+          
         </tr>
         `;
       });
@@ -212,21 +222,38 @@ app.get("/update/id/:id/name/:name/email/:email", (req, res) => {
 });
 
 app.post("/postdata", (req, res) => {
-  const insert = `
-      insert into users(name,email) values('${req.body.name}','${req.body.email}')
-    `;
-
-  conn.query(insert, (err, results) => {
+  conn.query("select * from users", (err, results) => {
     if (err) {
-      console.log("Error inserting " + err);
-      res
-        .status(500)
-        .send('Not able to insert in database');
+      console.log("error in selecting " + err);
     } else {
-      console.log(results);
-      res
-        .status(200)
-        .send("Record inserted successfull");
+      //console.log(results);
+
+      let name = "";
+      let email = "";
+      results.forEach((i) => {
+        if (i.name == req.body.name && i.email == req.body.email) {
+          name = i.name;
+          email = i.email;
+        }
+      });
+
+      if (name == "" && email == "") {
+        const insert = `
+         insert into users(name,email) values('${req.body.name}','${req.body.email}')
+          `;
+
+        conn.query(insert, (err, results) => {
+          if (err) {
+            console.log("Error in inserting : " + err);
+            res.status(500).send("Error in inserting");
+          } else {
+            console.log(results);
+            res.status(200).send("Record Inserted successfull");
+          }
+        });
+      } else {
+        res.status(500).send("User Already exists with this data");
+      }
     }
   });
 });
