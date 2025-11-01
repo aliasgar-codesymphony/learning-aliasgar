@@ -49,6 +49,8 @@ app.get("/insert", (req, res) => {
     i.phone,
     i.email,
     i.isActive,
+    i.gender,
+    i.age,
   ]);
   const insert = `INSERT INTO
   employee (
@@ -60,7 +62,9 @@ app.get("/insert", (req, res) => {
     state,
     phone,
     email,
-    isActive
+    isActive,
+    gender,
+    age
   )
 VALUES
   ?`;
@@ -125,7 +129,36 @@ app.get("/select/state/:state", (req, res) => {
 });
 
 app.get("/select/isActive/:isActive", (req, res) => {
-  sql = `select * from employee where isActive='${req.params.isActive}'`;
+  const sql = `select * from employee where isActive='${req.params.isActive}'`;
+  conn.query(sql, (err, results) => {
+    if (err) {
+      res.status(500).send("Error in selecting: " + err);
+    } else {
+      const obj = {
+        length: results.length,
+        result: results,
+      };
+      console.log("Length : " + results.length);
+      res.status(200).send(obj);
+    }
+  });
+});
+
+app.get("/select2", (req, res) => {
+  let sql = "select * from employee";
+  if (
+    req.query.isActive &&
+    req.query.gender &&
+    req.query.age &&
+    req.query.sign
+  ) {
+    sql = `select * from employee where isActive='${req.query.isActive}' AND gender='${req.query.gender}' AND age${req.query.sign}${req.query.age}`;
+  } else if (req.query.isActive && req.query.gender) {
+    sql = `select * from employee where isActive='${req.query.isActive}' AND gender='${req.query.gender}'`;
+  } else if (req.query.isActive) {
+    sql = `select * from employee where isActive='${req.query.isActive}'`;
+  }
+
   conn.query(sql, (err, results) => {
     if (err) {
       res.status(500).send("Error in selecting: " + err);
