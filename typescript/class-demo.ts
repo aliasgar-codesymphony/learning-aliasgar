@@ -1,3 +1,9 @@
+interface Stud {
+  id: number;
+  name: string;
+  age: number;
+}
+
 class Student {
   id: number;
   name: string;
@@ -15,5 +21,8 @@ class Student {
   }
 }
 
-const stud1 = new Student(1, "Amit", 15);
-stud1.displayInfo();
+const s1 = new Student(1, "Amit", 15);
+s1.displayInfo();
+
+const s2: Stud = new Student(2, "Rahul", 17);
+console.log(s2);

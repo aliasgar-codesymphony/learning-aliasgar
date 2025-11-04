@@ -269,4 +269,11 @@ calldemo(10, 20, add);
 });
  */
 
+const obj = {
+  width: 15,
+  height: 20,
+};
 
+const area = obj.width * obj.heigth;
+
+console.log(area);
